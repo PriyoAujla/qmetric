@@ -6,14 +6,17 @@ import kata.supermarket.Product;
 import kata.supermarket.WeighedProduct;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static java.util.Collections.addAll;
 import static kata.supermarket.testing.ProductIdsForTesting.AmericanSweetsId;
 import static kata.supermarket.testing.ProductIdsForTesting.PackOfDigestivesId;
 import static kata.supermarket.testing.ProductIdsForTesting.PickAndMixId;
 import static kata.supermarket.testing.ProductIdsForTesting.PintOfMilkId;
+import static kata.supermarket.testing.ProductIdsForTesting.SomeProductId;
 
 
 public class TestData {
@@ -40,6 +43,10 @@ public class TestData {
 
     public static Item twoHundredGramsOfPickAndMix() {
         return aKiloOfPickAndMix().weighing(new BigDecimal(".2"));
+    }
+
+    public static Item someProduct() {
+        return new Product(new BigDecimal("0.25"), SomeProductId).oneOf();
     }
 
     public static List<Item> multipleOf(Supplier<Item> itemSupplier, int howMany) {
