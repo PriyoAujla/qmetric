@@ -31,7 +31,8 @@ class BuyOneGetOneFreeTest {
     static Stream<Arguments> itemHasExpectedDiscount() {
         return Stream.of(
                 Arguments.of("0.00", multipleOf(TestData::aPackOfDigestives, 2)),
-                Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 2))
+                Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 2)),
+                Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 3))
         );
     }
 }
