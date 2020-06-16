@@ -21,7 +21,7 @@ class BuyOneGetOneFreeTest {
 
     @ParameterizedTest
     @MethodSource
-    void itemHasExpectedDiscount(String expectedDiscountAmount, List<Item> items) {
+    void itemsHaveExpectedDiscount(String expectedDiscountAmount, List<Item> items) {
         BuyOneGetOneFree buyOneGetOneFree = new BuyOneGetOneFree(ImmutableSet.of(
                 PintOfMilkId,
                 SomeProductId
@@ -33,7 +33,7 @@ class BuyOneGetOneFreeTest {
         assertEquals(expectedDiscount.getAmount(), actualDiscount.getAmount());
     }
 
-    static Stream<Arguments> itemHasExpectedDiscount() {
+    static Stream<Arguments> itemsHaveExpectedDiscount() {
         return Stream.of(
                 Arguments.of("0.00", multipleOf(TestData::aPackOfDigestives, 2)),
                 Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 2)),
