@@ -1,6 +1,6 @@
 package kata.supermarket;
 
-import com.google.common.collect.ImmutableList;
+import kata.supermarket.testing.TestData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -9,14 +9,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-import static kata.supermarket.testing.ProductIdsForTesting.AmericanSweetsId;
-import static kata.supermarket.testing.ProductIdsForTesting.PackOfDigestivesId;
-import static kata.supermarket.testing.ProductIdsForTesting.PickAndMixId;
-import static kata.supermarket.testing.ProductIdsForTesting.PintOfMilkId;
+import static kata.supermarket.testing.TestData.aPackOfDigestives;
+import static kata.supermarket.testing.TestData.aPintOfMilk;
+import static kata.supermarket.testing.TestData.multipleOf;
+import static kata.supermarket.testing.TestData.twoFiftyGramsOfAmericanSweets;
+import static kata.supermarket.testing.TestData.twoHundredGramsOfPickAndMix;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BasketTest {
@@ -65,34 +64,6 @@ class BasketTest {
     }
 
     static Arguments multipleItemsBuyOneGetOneFreeDiscount() {
-        return Arguments.of("a buy one get one free discounted item", "0.49", multipleOf(BasketTest::aPintOfMilk, 2));
-    }
-
-    private static Item aPintOfMilk() {
-        return new Product(new BigDecimal("0.49"), PintOfMilkId).oneOf();
-    }
-
-    private static Item aPackOfDigestives() {
-        return new Product(new BigDecimal("1.55"), PackOfDigestivesId).oneOf();
-    }
-
-    private static WeighedProduct aKiloOfAmericanSweets() {
-        return new WeighedProduct(new BigDecimal("4.99"), AmericanSweetsId);
-    }
-
-    private static Item twoFiftyGramsOfAmericanSweets() {
-        return aKiloOfAmericanSweets().weighing(new BigDecimal(".25"));
-    }
-
-    private static WeighedProduct aKiloOfPickAndMix() {
-        return new WeighedProduct(new BigDecimal("2.99"), PickAndMixId);
-    }
-
-    private static Item twoHundredGramsOfPickAndMix() {
-        return aKiloOfPickAndMix().weighing(new BigDecimal(".2"));
-    }
-
-    public static List<Item> multipleOf(Supplier<Item> itemSupplier, int howMany) {
-        return ImmutableList.copyOf(Collections.nCopies(howMany, itemSupplier.get()));
+        return Arguments.of("a buy one get one free discounted item", "0.49", multipleOf(TestData::aPintOfMilk, 2));
     }
 }
