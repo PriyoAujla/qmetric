@@ -38,3 +38,5 @@ different primitives for example Money rather can BigDecimal, I think the roundi
 
 12. Forgot to add a test case to BuyOneGetOneFreeTest that checks no discount is applied when list of items is zero
 or when there is only one item.
+
+13. Another class of test cases I have forgotten about is to make sure the discount is not applied to weighted items.
