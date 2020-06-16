@@ -32,7 +32,8 @@ class BuyOneGetOneFreeTest {
         return Stream.of(
                 Arguments.of("0.00", multipleOf(TestData::aPackOfDigestives, 2)),
                 Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 2)),
-                Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 3))
+                Arguments.of("0.49", multipleOf(TestData::aPintOfMilk, 3)),
+                Arguments.of("0.98", multipleOf(TestData::aPintOfMilk, 4))
         );
     }
 }
