@@ -1,8 +1,10 @@
 package kata.supermarket.discount;
 
+import kata.supermarket.common.HasEqualsAndHashCode;
+
 import java.math.BigDecimal;
 
-public class Discount {
+public class Discount extends HasEqualsAndHashCode {
     private final DiscountSchemeName name;
     private final BigDecimal amount;
 

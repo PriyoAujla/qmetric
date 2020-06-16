@@ -1,6 +1,8 @@
 package kata.supermarket.discount;
 
-public class DiscountSchemeName {
+import kata.supermarket.common.HasEqualsAndHashCode;
+
+public class DiscountSchemeName extends HasEqualsAndHashCode {
     private final String value;
 
     public DiscountSchemeName(String value) {

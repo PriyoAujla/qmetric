@@ -1,6 +1,7 @@
 package kata.supermarket;
 
-import kata.supermarket.discount.BuyOneGetOneFree;
+import kata.supermarket.discount.Discount;
+import kata.supermarket.discount.PricingDiscount;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,10 +11,11 @@ import java.util.List;
 
 public class Basket {
     private final List<Item> items;
-    private final BuyOneGetOneFree buyOneGetOneFree = new BuyOneGetOneFree();
+    private final PricingDiscount pricingDiscount;
 
-    public Basket() {
+    public Basket(PricingDiscount pricingDiscount) {
         this.items = new ArrayList<>();
+        this.pricingDiscount = pricingDiscount;
     }
 
     public void add(final Item item) {
@@ -50,7 +52,13 @@ public class Basket {
          *  which provides that functionality.
          */
         private BigDecimal discounts() {
-            return buyOneGetOneFree.apply(items).getAmount();
+            return pricingDiscount
+                    .on(items)
+                    .stream()
+                    .map(Discount::getAmount)
+                    .reduce(BigDecimal::add)
+                    .orElse(BigDecimal.ZERO)
+                    .setScale(2, RoundingMode.HALF_UP);
         }
 
         private BigDecimal calculate() {
