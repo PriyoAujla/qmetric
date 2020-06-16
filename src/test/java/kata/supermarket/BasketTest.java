@@ -1,5 +1,6 @@
 package kata.supermarket;
 
+import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,6 +9,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +32,8 @@ class BasketTest {
                 aSingleItemPricedPerUnit(),
                 multipleItemsPricedPerUnit(),
                 aSingleItemPricedByWeight(),
-                multipleItemsPricedByWeight()
+                multipleItemsPricedByWeight(),
+                multipleItemsBuyOneGetOneFreeDiscount()
         );
     }
 
@@ -56,6 +60,10 @@ class BasketTest {
         return Arguments.of("no items", "0.00", Collections.emptyList());
     }
 
+    static Arguments multipleItemsBuyOneGetOneFreeDiscount() {
+        return Arguments.of("a buy one get one free discounted item", "0.49", multipleOf(BasketTest::aPintOfMilk, 2));
+    }
+
     private static Item aPintOfMilk() {
         return new Product(new BigDecimal("0.49")).oneOf();
     }
@@ -78,5 +86,9 @@ class BasketTest {
 
     private static Item twoHundredGramsOfPickAndMix() {
         return aKiloOfPickAndMix().weighing(new BigDecimal(".2"));
+    }
+
+    public static List<Item> multipleOf(Supplier<Item> itemSupplier, int howMany) {
+        return ImmutableList.copyOf(Collections.nCopies(howMany, itemSupplier.get()));
     }
 }
