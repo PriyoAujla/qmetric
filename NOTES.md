@@ -33,3 +33,5 @@ however is currently not enforced anywhere.
 different primitives for example Money rather can BigDecimal, I think the rounding up could be encapsulated in Money.
 
 10. BuyOneGetOneFree can probably be generalised to XForY.
+
+11. Forgot to add a test case to BuyOneGetOneFreeTest that checks no discount is applied when list of items is zero.
