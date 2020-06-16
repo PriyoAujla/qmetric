@@ -34,4 +34,5 @@ different primitives for example Money rather can BigDecimal, I think the roundi
 
 10. BuyOneGetOneFree can probably be generalised to XForY.
 
-11. Forgot to add a test case to BuyOneGetOneFreeTest that checks no discount is applied when list of items is zero.
+11. Forgot to add a test case to BuyOneGetOneFreeTest that checks no discount is applied when list of items is zero
+or when there is only one item.
