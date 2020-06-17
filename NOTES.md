@@ -40,3 +40,6 @@ different primitives for example Money rather can BigDecimal, I think the roundi
 or when there is only one item.
 
 13. Another class of test cases I have forgotten about is to make sure the discount is not applied to weighted items.
+
+14. Just realised I also made a mistake to round up the discount in the BuyOneGetOneFree discount, this should happen
+in the TotalCalculator to avoid the compounding of rounding errors.
