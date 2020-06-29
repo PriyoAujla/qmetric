@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Stream;
 
+import static kata.supermarket.testing.TestData.aHalfKiloOfCarrots;
+import static kata.supermarket.testing.TestData.aHalfKiloOfPeas;
 import static kata.supermarket.testing.TestData.aPackOfDigestives;
 import static kata.supermarket.testing.TestData.aPintOfMilk;
 import static kata.supermarket.testing.TestData.multipleOf;
@@ -37,7 +39,14 @@ class BasketTest {
                 multipleItemsPricedPerUnit(),
                 aSingleItemPricedByWeight(),
                 multipleItemsPricedByWeight(),
-                multipleItemsBuyOneGetOneFreeDiscount()
+                multipleItemsBuyOneGetOneFreeDiscount(),
+                multipleItemsBuyOneKiloOfVegetablesForHalfPrice()
+        );
+    }
+
+    private static Arguments multipleItemsBuyOneKiloOfVegetablesForHalfPrice() {
+        return Arguments.of("a buy one kilo of vegetables for half price", "0.67",
+                Arrays.asList(aHalfKiloOfCarrots(), aHalfKiloOfPeas())
         );
     }
 

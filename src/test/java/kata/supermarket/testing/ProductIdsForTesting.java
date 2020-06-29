@@ -8,6 +8,8 @@ public enum ProductIdsForTesting implements ProductId {
     PackOfDigestivesId("pack-of-digestives"),
     AmericanSweetsId("american-sweets"),
     PickAndMixId("pick-and-mix"),
+    CarrotsId("carrots"),
+    PeasId("pads"),
     SomeProductId("some-product-id");
 
     private final String id;

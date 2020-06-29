@@ -13,7 +13,9 @@ import java.util.function.Supplier;
 
 import static java.util.Collections.addAll;
 import static kata.supermarket.testing.ProductIdsForTesting.AmericanSweetsId;
+import static kata.supermarket.testing.ProductIdsForTesting.CarrotsId;
 import static kata.supermarket.testing.ProductIdsForTesting.PackOfDigestivesId;
+import static kata.supermarket.testing.ProductIdsForTesting.PeasId;
 import static kata.supermarket.testing.ProductIdsForTesting.PickAndMixId;
 import static kata.supermarket.testing.ProductIdsForTesting.PintOfMilkId;
 import static kata.supermarket.testing.ProductIdsForTesting.SomeProductId;
@@ -39,6 +41,24 @@ public class TestData {
 
     public static WeighedProduct aKiloOfPickAndMix() {
         return new WeighedProduct(new BigDecimal("2.99"), PickAndMixId);
+    }
+
+    public static Item aHalfKiloOfCarrots() {
+        BigDecimal halfKilo = new BigDecimal(".5");
+        return weightOfCarrots(halfKilo);
+    }
+
+    public static Item weightOfCarrots(BigDecimal wightInKilos) {
+        return new WeighedProduct(new BigDecimal("1.59"), CarrotsId).weighing(wightInKilos);
+    }
+
+    public static Item aHalfKiloOfPeas() {
+        BigDecimal halfKilo = new BigDecimal(".5");
+        return weightOfPeas(halfKilo);
+    }
+
+    public static Item weightOfPeas(BigDecimal halfKilo) {
+        return new WeighedProduct(new BigDecimal("1.09"), PeasId).weighing(halfKilo);
     }
 
     public static Item twoHundredGramsOfPickAndMix() {
